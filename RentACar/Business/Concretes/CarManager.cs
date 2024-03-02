@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Business.Rules;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
@@ -13,10 +14,13 @@ public class CarManager : ICarService
 {
 
     private readonly ICarDal _carDal;
+    private readonly CarBusinessRules carBusinessRules;
+
 
     public CarManager(ICarDal carDal)
     {
         _carDal = carDal;
+        carBusinessRules = new CarBusinessRules();
     }
 
     public List<Car> GetAll()
@@ -26,20 +30,31 @@ public class CarManager : ICarService
 
     public List<Car> GetCarsByBrandId(int brandId)
     {
-        return _carDal.GetCarsByBrandId(brandId);
-    }
-    public void Add(Car car)
-    {
-        _carDal.Add(car);
+        return _carDal.GetAll(c => c.BrandId == brandId);
     }
 
-    public void Delete(int id)
+    public List<Car> GetCarsByColorId(int colorId)
     {
-        _carDal.Delete(id);
+        return _carDal.GetAll(c => c.ColorId == colorId);
+    }
+
+    public void Add(Car car)
+    {
+        carBusinessRules.checkCarDescription(car.Description);
+        carBusinessRules.checkCarDailyPrice(car.DailyPrice);
+
+        _carDal.Add(car);
     }
 
     public void Update(Car car)
     {
         _carDal.Update(car);
     }
+
+    public void Delete(Car car)
+    {
+        _carDal.Delete(car);
+    }
+
+    
 }

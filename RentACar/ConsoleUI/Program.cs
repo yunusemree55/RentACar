@@ -1,35 +1,17 @@
 ﻿
 using Business.Concretes;
+using DataAccess.Concretes.EntityFramework;
 using DataAccess.Concretes.InMemory;
 using Entities.Concretes;
 
-CarManager carManager = new CarManager(new InMemoryCarDal());
-
-// Listing cars ->
-
-foreach (var car in carManager.GetAll())
-{
-    Console.WriteLine(car.Description);
-}
-
-//Adding car ->
-
-Car car1 = new Car { Id = 5,BrandId = 1,ColorId = 2,Description = "Mustang", ModelYear = 2008, DailyPrice = 570 };
-
-carManager.Add(car1);
-
-// Listing cars by BrandId ->
-
-foreach (Car car in carManager.GetCarsByBrandId(1))
-{
-    Console.WriteLine(car.Description);
-}
-
-// Deleting Car ->
-
-carManager.Delete(2);
+CarManager carManager = new CarManager(new EfCarDal());
+ColorManager colorManager = new ColorManager(new EfColorDal());
 
 foreach (var car in carManager.GetAll())
 {
-    Console.WriteLine(car.Description);
+    //Console.WriteLine(car.Description);
 }
+
+Car car1 = new Car { ColorId = 1 , BrandId = 1, Description = "", DailyPrice = 0 };
+
+//carManager.Add(car1);
