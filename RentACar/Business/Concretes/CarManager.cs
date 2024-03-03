@@ -2,6 +2,7 @@
 using Business.Rules;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,16 @@ public class CarManager : ICarService
     public List<Car> GetCarsByColorId(int colorId)
     {
         return _carDal.GetAll(c => c.ColorId == colorId);
+    }
+
+    public List<CarDetailDto> GetAllCarDetails()
+    {
+        return _carDal.GetAllCarDetails();
+    }
+
+    public CarDetailDto GetCarDetail(int id)
+    {
+        return _carDal.GetCarDetail(id);
     }
 
     public void Add(Car car)

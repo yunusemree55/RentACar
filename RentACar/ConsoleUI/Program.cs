@@ -4,14 +4,49 @@ using DataAccess.Concretes.EntityFramework;
 using DataAccess.Concretes.InMemory;
 using Entities.Concretes;
 
-CarManager carManager = new CarManager(new EfCarDal());
-ColorManager colorManager = new ColorManager(new EfColorDal());
 
-foreach (var car in carManager.GetAll())
+CarManager carManager = new CarManager(new EfCarDal());
+//CarTest();
+//BrandAddTest();
+//ColorAddTest();
+//CarAddTest();
+
+//CarDetailsTest();
+
+Console.WriteLine(carManager.GetCarDetail(3).BrandName);
+
+static void CarTest()
 {
-    //Console.WriteLine(car.Description);
+    CarManager carManager = new CarManager(new EfCarDal());
+    foreach (var car in carManager.GetAll())
+    {
+        Console.WriteLine(car.Description);
+    }
 }
 
-Car car1 = new Car { ColorId = 1 , BrandId = 1, Description = "", DailyPrice = 0 };
+static void BrandAddTest()
+{
+    BrandManager brandManager = new BrandManager(new EfBrandDal());
+    brandManager.Add(new Brand { Name = "Mercedes" });
+}
 
-//carManager.Add(car1);
+static void ColorAddTest()
+{
+    ColorManager colorManager = new ColorManager(new EfColorDal());
+    colorManager.Add(new Color { Name = "Gri" });
+}
+
+static void CarAddTest()
+{
+    CarManager carManager = new CarManager(new EfCarDal());
+    carManager.Add(new Car { BrandId = 2, ColorId = 1, Description = "Benz", ModelYear = 2018, DailyPrice = 750 });
+}
+
+static void CarDetailsTest()
+{
+    CarManager carManager = new CarManager(new EfCarDal());
+    foreach (var car in carManager.GetAllCarDetails())
+    {
+        Console.WriteLine($"{car.Id}->{car.BrandName} {car.Description} adlı arabanın rengi {car.ColorName}");
+    }
+}

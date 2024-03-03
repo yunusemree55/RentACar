@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,16 @@ public class InMemoryCarDal : ICarDal
     }
 
     public Car Get(Expression<Func<Car, bool>> filter)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<CarDetailDto> GetAllCarDetails()
+    {
+        throw new NotImplementedException();
+    }
+
+    public CarDetailDto GetCarDetail(int id)
     {
         throw new NotImplementedException();
     }
