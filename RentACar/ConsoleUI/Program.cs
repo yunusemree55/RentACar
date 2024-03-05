@@ -9,16 +9,16 @@ CarManager carManager = new CarManager(new EfCarDal());
 //CarTest();
 //BrandAddTest();
 //ColorAddTest();
-//CarAddTest();
+CarAddTest();
 
 //CarDetailsTest();
 
-Console.WriteLine(carManager.GetCarDetail(3).BrandName);
+//Console.WriteLine(carManager.GetCarDetail(1).Data.BrandName);
 
 static void CarTest()
 {
     CarManager carManager = new CarManager(new EfCarDal());
-    foreach (var car in carManager.GetAll())
+    foreach (var car in carManager.GetAll().Data)
     {
         Console.WriteLine(car.Description);
     }
@@ -39,13 +39,14 @@ static void ColorAddTest()
 static void CarAddTest()
 {
     CarManager carManager = new CarManager(new EfCarDal());
-    carManager.Add(new Car { BrandId = 2, ColorId = 1, Description = "Benz", ModelYear = 2018, DailyPrice = 750 });
+    var message = carManager.Add(new Car { BrandId = 2, ColorId = 1, Description = "dhgh", ModelYear = 2018, DailyPrice = 0 }).Message;
+    Console.WriteLine(message);
 }
 
 static void CarDetailsTest()
 {
     CarManager carManager = new CarManager(new EfCarDal());
-    foreach (var car in carManager.GetAllCarDetails())
+    foreach (var car in carManager.GetAllCarDetails().Data)
     {
         Console.WriteLine($"{car.Id}->{car.BrandName} {car.Description} adlı arabanın rengi {car.ColorName}");
     }

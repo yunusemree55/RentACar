@@ -1,10 +1,13 @@
 ﻿using Business.Abstracts;
 using Business.Rules;
+using Core.Utilities.Results.Abstracts;
+using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,47 +27,51 @@ public class CarManager : ICarService
         carBusinessRules = new CarBusinessRules();
     }
 
-    public List<Car> GetAll()
+    public IDataResult<List<Car>> GetAll()
     {
-        return _carDal.GetAll();
+        return new SuccessDataResult<List<Car>>(_carDal.GetAll(),"Tüm arabalar listelendi");
     }
 
-    public List<Car> GetCarsByBrandId(int brandId)
+    public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
     {
-        return _carDal.GetAll(c => c.BrandId == brandId);
+        return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId), "İlgili markaya ait arabalar listelendi");
     }
 
-    public List<Car> GetCarsByColorId(int colorId)
+    public IDataResult<List<Car>> GetCarsByColorId(int colorId)
     {
-        return _carDal.GetAll(c => c.ColorId == colorId);
+        return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId),"İlgili renge ait arabalar listelendi");
     }
 
-    public List<CarDetailDto> GetAllCarDetails()
+    public IDataResult<List<CarDetailDto>> GetAllCarDetails()
     {
-        return _carDal.GetAllCarDetails();
+        return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(),"Tüm araba bilgileri listelendi");
     }
 
-    public CarDetailDto GetCarDetail(int id)
+    public IDataResult<CarDetailDto> GetCarDetail(int id)
     {
-        return _carDal.GetCarDetail(id);
+        return new SuccessDataResult<CarDetailDto>(_carDal.GetCarDetail(id),"İlgili araba bilgileri listelendi");
     }
 
-    public void Add(Car car)
+    public IResult Add(Car car)
     {
         carBusinessRules.checkCarDescription(car.Description);
         carBusinessRules.checkCarDailyPrice(car.DailyPrice);
 
         _carDal.Add(car);
+        return new SuccessResult("Araba eklendi");
+        
     }
 
-    public void Update(Car car)
+    public IResult Update(Car car)
     {
         _carDal.Update(car);
+        return new SuccessResult("Araba güncellendi");
     }
 
-    public void Delete(Car car)
+    public IResult Delete(Car car)
     {
         _carDal.Delete(car);
+        return new SuccessResult("Araba silindi");
     }
 
     

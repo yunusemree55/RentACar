@@ -1,5 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Rules;
+using Core.Utilities.Results.Abstracts;
+using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
@@ -19,28 +21,31 @@ public class BrandManager : IBrandService
         _brandDal = brandDal;
     }
 
-    public void Add(Brand brand)
+    public IResult Add(Brand brand)
     {
         _brandDal.Add(brand);
+        return new SuccessResult("Marka eklendi");
     }
 
-    public void Delete(Brand brand)
+    public IResult Delete(Brand brand)
     {
         _brandDal.Delete(brand);
+        return new SuccessResult("Marka silindi");
     }
 
-    public List<Brand> GetAll()
+    public IDataResult<List<Brand>> GetAll()
     {
-        return _brandDal.GetAll();
+        return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),"Tüm markalar listelendi");
     }
 
-    public Brand GetBrandById(int id)
+    public IDataResult<Brand> GetBrandById(int id)
     {
-        return _brandDal.Get(b => b.Id == id);
+        return new SuccessDataResult<Brand>(_brandDal.Get(b => b.Id == id));
     }
 
-    public void Update(Brand brand)
+    public IResult Update(Brand brand)
     {
         _brandDal.Update(brand);
+        return new SuccessResult("Marka güncellendi");
     }
 }
