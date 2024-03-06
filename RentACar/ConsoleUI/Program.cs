@@ -6,10 +6,16 @@ using Entities.Concretes;
 
 
 CarManager carManager = new CarManager(new EfCarDal());
+CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+//customerManager.Add(new Customer { FirstName = "Enes Emir", LastName = "Çiçek", Email = "enesemir@gmail.com", Password = "ee123" });
+
+//Console.WriteLine(customerManager.GetCustomerById(2).Data.Email.Length);
+
 //CarTest();
 //BrandAddTest();
 //ColorAddTest();
-CarAddTest();
+//CarAddTest();
 
 //CarDetailsTest();
 
@@ -33,14 +39,13 @@ static void BrandAddTest()
 static void ColorAddTest()
 {
     ColorManager colorManager = new ColorManager(new EfColorDal());
-    colorManager.Add(new Color { Name = "Gri" });
+    colorManager.Add(new Color { Name = "Siyah" });
 }
 
 static void CarAddTest()
 {
     CarManager carManager = new CarManager(new EfCarDal());
-    var message = carManager.Add(new Car { BrandId = 2, ColorId = 1, Description = "dhgh", ModelYear = 2018, DailyPrice = 0 }).Message;
-    Console.WriteLine(message);
+    carManager.Add(new Car { BrandId = 2, ColorId = 1, Description = "Benz", ModelYear = 2020, DailyPrice = 750 });
 }
 
 static void CarDetailsTest()
