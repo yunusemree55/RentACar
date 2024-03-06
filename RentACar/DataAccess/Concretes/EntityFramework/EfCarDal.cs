@@ -22,10 +22,13 @@ public class EfCarDal : EfEntityRepository<Car, RentACarContext>, ICarDal
                          on car.BrandId equals brand.Id
                          join color in context.Colors
                          on car.ColorId equals color.Id
+                         join company in context.Companies
+                         on car.CompanyId equals company.Id
                          select new CarDetailDto {
                              Id = car.Id,
                              BrandName = brand.Name,
                              ColorName = color.Name,
+                             CompanyName = company.Name,
                              Description = car.Description, 
                              ModelYear = car.ModelYear, 
                              DailyPrice = car.DailyPrice 
@@ -46,12 +49,15 @@ public class EfCarDal : EfEntityRepository<Car, RentACarContext>, ICarDal
                          on car.BrandId equals brand.Id
                          join color in context.Colors
                          on car.ColorId equals color.Id
+                         join company in context.Companies
+                         on car.CompanyId equals company.Id
                          where car.Id == id
                          select new CarDetailDto
                          {
                              Id = car.Id,
                              BrandName = brand.Name,
                              ColorName = color.Name,
+                             CompanyName = company.Name,
                              Description = car.Description,
                              ModelYear = car.ModelYear,
                              DailyPrice = car.DailyPrice

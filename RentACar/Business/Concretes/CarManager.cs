@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
-using Business.Rules;
+using Business.Rules.Abstracts;
+using Business.Rules.Concretes;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
@@ -18,13 +19,13 @@ public class CarManager : ICarService
 {
 
     private readonly ICarDal _carDal;
-    private readonly CarBusinessRules carBusinessRules;
+    private readonly ICarBusinessRules _carBusinessRules;
 
 
-    public CarManager(ICarDal carDal)
+    public CarManager(ICarDal carDal, ICarBusinessRules carBusinessRules)
     {
         _carDal = carDal;
-        carBusinessRules = new CarBusinessRules();
+        _carBusinessRules = carBusinessRules;
     }
 
     public IDataResult<List<Car>> GetAll()
@@ -54,8 +55,8 @@ public class CarManager : ICarService
 
     public IResult Add(Car car)
     {
-        carBusinessRules.checkCarDescription(car.Description);
-        carBusinessRules.checkCarDailyPrice(car.DailyPrice);
+        _carBusinessRules.checkCarDescription(car.Description);
+        _carBusinessRules.checkCarDailyPrice(car.DailyPrice);
 
         _carDal.Add(car);
         return new SuccessResult("Araba eklendi");
