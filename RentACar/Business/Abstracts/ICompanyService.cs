@@ -12,6 +12,7 @@ namespace Business.Abstracts;
 public interface ICompanyService
 {
     IDataResult<CompanyDetailDto> GetCompanyById(int id);
+    IDataResult<CompanyWithCarDetailDto> GetCompanyWithCarDetail(int id);
     IResult Add(Company company);
     IResult Update(Company company);
     IResult Delete(Company company);

@@ -16,6 +16,4 @@ public class CarDetailDto : IDto
     public string CompanyName { get; set; }
     public int ModelYear { get; set; }
     public double DailyPrice { get; set; }
-
-
 }

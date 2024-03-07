@@ -21,6 +21,17 @@ public class CompanyManager : ICompanyService
         _companyDal = companyDal;
     }
 
+    public IDataResult<CompanyDetailDto> GetCompanyById(int id)
+    {
+
+        return new SuccessDataResult<CompanyDetailDto>(_companyDal.GetCompanyDetailById(id), "İlgili şirket listelendi");
+    }
+
+    public IDataResult<CompanyWithCarDetailDto> GetCompanyWithCarDetail(int id)
+    {
+        return new SuccessDataResult<CompanyWithCarDetailDto>(_companyDal.GetCompanyWithCarDetail(id));
+    }
+
     public IResult Add(Company company)
     {
 
@@ -33,12 +44,6 @@ public class CompanyManager : ICompanyService
 
         _companyDal.Delete(company);
         return new SuccessResult("Şirket sistemden silindi");
-    }
-
-    public IDataResult<CompanyDetailDto> GetCompanyById(int id)
-    {
-
-        return new SuccessDataResult<CompanyDetailDto>(_companyDal.GetCompanyDetailById(id),"İlgili şirket listelendi");
     }
 
     public IResult Update(Company company)

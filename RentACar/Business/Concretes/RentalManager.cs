@@ -34,8 +34,9 @@ public class RentalManager : IRentalService
 
     public IResult RemoveCar(Rental rental)
     {
-        rental.ReturnDate = DateTime.Now;
-        _rentalDal.Update(rental);
+        Rental target = _rentalDal.Get(r => r.Id == rental.Id);
+        target.ReturnDate = DateTime.Now;
+        _rentalDal.Update(target);
 
         return new SuccessResult("Araba teslimi gerçekleştirildi");
     }
