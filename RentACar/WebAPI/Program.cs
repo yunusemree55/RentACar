@@ -1,5 +1,8 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstracts;
 using Business.Concretes;
+using Business.DependencyResolvers.Autofac;
 using Business.Rules.Abstracts;
 using Business.Rules.Concretes;
 using Core.DataAccess.EntityFramework;
@@ -8,6 +11,13 @@ using DataAccess.Concretes.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacBusinessModule());
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -15,25 +25,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IBrandService,BrandManager>();
-builder.Services.AddSingleton<IBrandDal,EfBrandDal>();
-
-builder.Services.AddSingleton<IColorService,ColorManager>();
-builder.Services.AddSingleton<IColorDal,EfColorDal>();
-
-builder.Services.AddSingleton<ICarService,CarManager>();
-builder.Services.AddSingleton<ICarBusinessRules, CarBusinessRules>();
-builder.Services.AddSingleton<ICarDal,EfCarDal>();
-
-builder.Services.AddSingleton<ICustomerService,CustomerManager>();
-builder.Services.AddSingleton<ICustomerDal,EfCustomerDal>();
-
-builder.Services.AddSingleton<ICompanyService,CompanyManager>();
-builder.Services.AddSingleton<ICompanyDal,EfCompanyDal>();
-
-builder.Services.AddSingleton<IRentalService,RentalManager>();
-builder.Services.AddSingleton<IRentalBusinessRules,RentalBusinessRules>();
-builder.Services.AddSingleton<IRentalDal,EfRentalDal>();
 
 var app = builder.Build();
 
