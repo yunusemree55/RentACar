@@ -1,8 +1,6 @@
 ﻿using Autofac;
 using Business.Abstracts;
 using Business.Concretes;
-using Business.Rules.Abstracts;
-using Business.Rules.Concretes;
 using Core.DataAccess.EntityFramework;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
@@ -27,7 +25,6 @@ public class AutofacBusinessModule : Module
         builder.RegisterType<EfColorDal>().As<IColorDal>().SingleInstance();
 
         builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
-        builder.RegisterType<CarBusinessRules>().As<ICarBusinessRules>().SingleInstance();
         builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
 
         builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();
@@ -37,7 +34,6 @@ public class AutofacBusinessModule : Module
         builder.RegisterType<EfCompanyDal>().As<ICompanyDal>().SingleInstance();
 
         builder.RegisterType<RentalManager>().As<IRentalService>().SingleInstance();
-        builder.RegisterType<RentalBusinessRules>().As<IRentalBusinessRules>().SingleInstance();
         builder.RegisterType<EfRentalDal>().As<IRentalDal>().SingleInstance();
 
 

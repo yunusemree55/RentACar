@@ -2,6 +2,7 @@
 using Entities.Concretes;
 using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,18 @@ namespace DataAccess.Concretes.EntityFramework;
 
 public class EfCompanyDal : EfEntityRepository<Company, RentACarContext>, ICompanyDal
 {
+    public bool CheckCompanyEmailIfExistedBefore(string email)
+    {
+        using (RentACarContext context = new RentACarContext())
+        {
+            var result = from company in context.Companies
+                         where company.Email == email
+                         select new Company();
+
+            return result.IsNullOrEmpty();
+        }
+    }
+
     public CompanyDetailDto GetCompanyDetailById(int id)
     {
         using (RentACarContext context = new RentACarContext())

@@ -14,4 +14,5 @@ public interface ICompanyDal : IEntityRepository<Company>
 
     CompanyDetailDto GetCompanyDetailById(int id);
     CompanyWithCarDetailDto GetCompanyWithCarDetail(int id);
+    bool CheckCompanyEmailIfExistedBefore(string email);
 }

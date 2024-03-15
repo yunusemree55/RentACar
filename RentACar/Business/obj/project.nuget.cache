@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ft6I8VSNrZ4IEyQ/sAE4VVP0jIAFUC2IdewdcXAAxDgy+s0X6POIosdetksRDnAF+j2K0y3vJ5N8qcwNMnmz5A==",
+  "dgSpecHash": "VJzn5GjsVaX6OP5zDDSmnh0feCBz5c8o/DBaQ0W2trzf30OLMl/OwfIyAJXE6GeD472g2JRDpXgnwyOoZEebhA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Yunus Emre\\Desktop\\C#RentACar\\RentACar\\Business\\Business.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\Yunus Emre\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.4\\microsoft.data.sqlclient.5.1.4.nupkg.sha512",

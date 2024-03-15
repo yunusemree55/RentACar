@@ -1,6 +1,6 @@
 ﻿using Business.Abstracts;
-using Business.Rules.Abstracts;
-using Business.Rules.Concretes;
+using Business.Rules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
@@ -19,13 +19,11 @@ public class CarManager : ICarService
 {
 
     private readonly ICarDal _carDal;
-    private readonly ICarBusinessRules _carBusinessRules;
 
 
-    public CarManager(ICarDal carDal, ICarBusinessRules carBusinessRules)
+    public CarManager(ICarDal carDal)
     {
         _carDal = carDal;
-        _carBusinessRules = carBusinessRules;
     }
 
     public IDataResult<List<Car>> GetAll()
@@ -55,8 +53,8 @@ public class CarManager : ICarService
 
     public IResult Add(Car car)
     {
-        _carBusinessRules.checkCarDescription(car.Description);
-        _carBusinessRules.checkCarDailyPrice(car.DailyPrice);
+
+        ValidationTool.Validate(new CarValidator(), car);
 
         _carDal.Add(car);
         return new SuccessResult("Araba eklendi");

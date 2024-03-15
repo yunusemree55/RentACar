@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,14 @@ namespace DataAccess.Concretes.EntityFramework;
 
 public class EfRentalDal : EfEntityRepository<Rental, RentACarContext>, IRentalDal
 {
-    public Rental GetUnreturnedCar(int carId)
+    public bool CheckRentedCarIsReturned(int carId)
     {
         using (RentACarContext context = new RentACarContext())
         {
-            var result = context.Set<Rental>().Where(r => r.CarId == carId && r.ReturnDate == null);
+            
+            var result = context.Set<Rental>().Where(r => r.CarId == carId && r.ReturnDate == null).SingleOrDefault();
 
-            return result.SingleOrDefault();
+            return result == null ? true : (result.ReturnDate == null ? false : true);
 
         }
     }

@@ -3,8 +3,6 @@ using Autofac.Extensions.DependencyInjection;
 using Business.Abstracts;
 using Business.Concretes;
 using Business.DependencyResolvers.Autofac;
-using Business.Rules.Abstracts;
-using Business.Rules.Concretes;
 using Core.DataAccess.EntityFramework;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;

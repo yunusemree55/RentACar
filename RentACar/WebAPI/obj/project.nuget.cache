@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i1Nc+YjUN8uzunVoTqCOcAuTpK+e0Jb89fhwKYOm++FDCIMKFMysQmPWBiIq/1znizwCepIgcQNLu6TpUQHhZg==",
+  "dgSpecHash": "XY6cngbsGuWgnIrAANek6j33NbVtJxOtnBmp+npwh+sWu29M3+i943kGZO4N5TiVC7R8agaDzh0cD2fG871hhA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Yunus Emre\\Desktop\\C#RentACar\\RentACar\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\Yunus Emre\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.4\\microsoft.data.sqlclient.5.1.4.nupkg.sha512",

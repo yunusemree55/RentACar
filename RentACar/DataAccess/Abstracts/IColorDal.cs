@@ -10,4 +10,5 @@ namespace Core.DataAccess.EntityFramework;
 
 public interface IColorDal : IEntityRepository<Color>
 {
+    bool CheckColorNameIfExistsBefore(string name);
 }

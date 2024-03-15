@@ -10,5 +10,5 @@ namespace DataAccess.Abstracts;
 
 public interface IBrandDal : IEntityRepository<Brand>
 {
-
+    bool CheckBrandNameIfExistsBefore(string name);
 }

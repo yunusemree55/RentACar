@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "IsmfbCnppaW2jBqI0G4577UAT/2igO1MgfBJM7lwo2MkbxNQ6MZPzSTezamgGdluiCkDTbdVHnVIcvDAXxytXQ==",
+  "dgSpecHash": "ggFHvbHOYG+Dfg1qxD0VwNK5Pm7En541myom1PWjI0Dm5guYlSckP9dNHokVFZu25XvRQMqpSwQHkbJ7OZ1JbQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Yunus Emre\\Desktop\\C#RentACar\\RentACar\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\Yunus Emre\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.4\\microsoft.data.sqlclient.5.1.4.nupkg.sha512",

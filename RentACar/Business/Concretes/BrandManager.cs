@@ -1,5 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Rules;
+using Business.Rules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
@@ -23,6 +25,9 @@ public class BrandManager : IBrandService
 
     public IResult Add(Brand brand)
     {
+
+        ValidationTool.Validate(new BrandValidator(_brandDal), brand);
+
         _brandDal.Add(brand);
         return new SuccessResult("Marka eklendi");
     }

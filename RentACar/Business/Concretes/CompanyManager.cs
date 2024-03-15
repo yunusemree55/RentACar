@@ -1,4 +1,6 @@
 ﻿using Business.Abstracts;
+using Business.Rules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
@@ -34,6 +36,7 @@ public class CompanyManager : ICompanyService
 
     public IResult Add(Company company)
     {
+        ValidationTool.Validate(new CompanyValidator(_companyDal),company);
 
         _companyDal.Add(company);
         return new SuccessResult("Şirket sisteme kaydedildi");

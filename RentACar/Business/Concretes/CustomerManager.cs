@@ -1,8 +1,11 @@
 ﻿using Business.Abstracts;
+using Business.Rules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +25,9 @@ public class CustomerManager : ICustomerService
 
     public IResult Add(Customer customer)
     {
+        
+        ValidationTool.Validate(new CustomerValidator(_customerDal),customer);
+
         _customerDal.Add(customer);
         return new SuccessResult($"{customer.FirstName} {customer.LastName} adlı müşteri sisteme eklendi");
     }

@@ -11,6 +11,6 @@ namespace DataAccess.Abstracts;
 public interface IRentalDal : IEntityRepository<Rental>
 {
 
-    Rental GetUnreturnedCar(int carId);
+    bool CheckRentedCarIsReturned(int carId);
 
 }

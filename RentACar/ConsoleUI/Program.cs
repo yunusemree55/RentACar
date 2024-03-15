@@ -1,17 +1,16 @@
 ﻿
 using Business.Concretes;
-using Business.Rules.Concretes;
 using DataAccess.Concretes.EntityFramework;
 using DataAccess.Concretes.InMemory;
 using Entities.Concretes;
 
 
-CarManager carManager = new CarManager(new EfCarDal(), new CarBusinessRules());
+CarManager carManager = new CarManager(new EfCarDal());
 CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-RentalManager rentalManager = new RentalManager(new EfRentalDal(), new RentalBusinessRules(new EfRentalDal()));
+RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
 //customerManager.Add(new Customer { FirstName = "Nedim", LastName = "Görgü", Email = "ng@gmail.com", Password = "ng123" });
-
+Console.WriteLine(DateTime.Now.Year);
 //Console.WriteLine(customerManager.GetCustomerById(2).Data.Email.Length);
 
 //CarTest();
@@ -30,7 +29,7 @@ RentalManager rentalManager = new RentalManager(new EfRentalDal(), new RentalBus
 
 static void CarTest()
 {
-    CarManager carManager = new CarManager(new EfCarDal(), new CarBusinessRules());
+    CarManager carManager = new CarManager(new EfCarDal());
     foreach (var car in carManager.GetAll().Data)
     {
         Console.WriteLine(car.Description);
@@ -51,13 +50,13 @@ static void ColorAddTest()
 
 static void CarAddTest()
 {
-    CarManager carManager = new CarManager(new EfCarDal(), new CarBusinessRules());
+    CarManager carManager = new CarManager(new EfCarDal());
     carManager.Add(new Car { BrandId = 2, ColorId = 1, CompanyId = 5, Description = "Benz", ModelYear = 2019, DailyPrice = 750 });
 }
 
 static void CarDetailsTest()
 {
-    CarManager carManager = new CarManager(new EfCarDal(), new CarBusinessRules());
+    CarManager carManager = new CarManager(new EfCarDal());
     foreach (var car in carManager.GetAllCarDetails().Data)
     {
         Console.WriteLine($"{car.Id}->{car.BrandName} {car.Description} adlı arabanın rengi {car.ColorName} ve arabanın sahibi {car.CompanyName} adlı şirkettir");
@@ -66,7 +65,7 @@ static void CarDetailsTest()
 
 static void RentalAddTest()
 {
-    RentalManager rentalManager = new RentalManager(new EfRentalDal(), new RentalBusinessRules(new EfRentalDal()));
+    RentalManager rentalManager = new RentalManager(new EfRentalDal());
     rentalManager.Add(new Rental { CustomerId = 1003, CarId = 3 });
 }
 

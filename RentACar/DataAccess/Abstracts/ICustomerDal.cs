@@ -10,4 +10,8 @@ namespace DataAccess.Abstracts;
 
 public interface ICustomerDal : IEntityRepository<Customer>
 {
+
+    bool CheckCustomerEmailIfExistsBefore(string email);
+
+
 }

@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
-using Business.Rules.Abstracts;
+using Business.Rules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
@@ -15,18 +16,17 @@ namespace Business.Concretes;
 public class RentalManager : IRentalService
 {
     private readonly IRentalDal _rentalDal;
-    private readonly IRentalBusinessRules _rentalBusinessRules;
 
-    public RentalManager(IRentalDal rentalDal,IRentalBusinessRules rentalBusinessRules)
+    public RentalManager(IRentalDal rentalDal)
     {
         _rentalDal = rentalDal;
-        _rentalBusinessRules = rentalBusinessRules;
     }
 
     public IResult Add(Rental rental)
     {
-        _rentalBusinessRules.checkIfCarIsReturned(rental.CarId);
-        
+
+        ValidationTool.Validate(new RentalValidator(_rentalDal), rental);
+
         rental.RentDate = DateTime.Now;
         _rentalDal.Add(rental);
         return new SuccessResult($"Araba {rental.RentDate.Day}/{rental.RentDate.Month}/{rental.RentDate.Year} tarihinde kiralandı");
