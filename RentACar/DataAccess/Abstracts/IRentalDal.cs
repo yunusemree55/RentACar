@@ -11,6 +11,6 @@ namespace DataAccess.Abstracts;
 public interface IRentalDal : IEntityRepository<Rental>
 {
 
-    bool CheckRentedCarIsReturned(int carId);
+    bool CheckRentedCarIsDelivered(int carId);
 
 }

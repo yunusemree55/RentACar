@@ -1,9 +1,11 @@
 ﻿using Business.Abstracts;
 using Business.Rules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using Entities.DTOs;
 using System;
@@ -34,9 +36,9 @@ public class CompanyManager : ICompanyService
         return new SuccessDataResult<CompanyWithCarDetailDto>(_companyDal.GetCompanyWithCarDetail(id));
     }
 
+    [ValidationAspect(typeof(CompanyValidator),typeof(EfCompanyDal))]
     public IResult Add(Company company)
     {
-        ValidationTool.Validate(new CompanyValidator(_companyDal),company);
 
         _companyDal.Add(company);
         return new SuccessResult("Şirket sisteme kaydedildi");

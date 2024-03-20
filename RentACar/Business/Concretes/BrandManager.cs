@@ -1,10 +1,12 @@
 ﻿using Business.Abstracts;
 using Business.Rules;
 using Business.Rules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -23,10 +25,9 @@ public class BrandManager : IBrandService
         _brandDal = brandDal;
     }
 
+    [ValidationAspect(typeof(BrandValidator),typeof(EfBrandDal))]
     public IResult Add(Brand brand)
     {
-
-        ValidationTool.Validate(new BrandValidator(_brandDal), brand);
 
         _brandDal.Add(brand);
         return new SuccessResult("Marka eklendi");

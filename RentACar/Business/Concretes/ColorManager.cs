@@ -1,8 +1,11 @@
 ﻿using Business.Abstracts;
+using Business.Rules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.DataAccess.EntityFramework;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -32,6 +35,7 @@ public class ColorManager : IColorService
         return new SuccessDataResult<Color>(_colorDal.Get(c => c.Id == id),"İlgili renk listelendi");
     }
 
+    [ValidationAspect(typeof(ColorValidator),typeof(EfColorDal))]
     public IResult Add(Color color)
     {
         _colorDal.Add(color);

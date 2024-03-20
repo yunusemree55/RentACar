@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstracts;
+﻿using Business.Constants;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 using FluentValidation;
 using System;
@@ -18,15 +19,15 @@ public class RentalValidator : AbstractValidator<Rental>
     {
         _rentalDal = rentalDal;
 
-        RuleFor(r => r.CarId).Must(CheckRentedCarIsReturned).WithMessage("Araba henüz teslim edilmemiştir.");
+        RuleFor(r => r.CarId).Must(CheckRentedCarIsDelivered).WithMessage(Message.CarIsNotReturned);
 
 
     }
 
-    private bool CheckRentedCarIsReturned(int id)
+    private bool CheckRentedCarIsDelivered(int id)
     {
 
-        return _rentalDal.CheckRentedCarIsReturned(id);
+        return _rentalDal.CheckRentedCarIsDelivered(id);
 
     }
 }

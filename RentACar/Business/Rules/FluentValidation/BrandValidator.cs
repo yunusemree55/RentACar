@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstracts;
+﻿using Business.Constants;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 using FluentValidation;
 using System;
@@ -18,9 +19,7 @@ public class BrandValidator : AbstractValidator<Brand>
 
         RuleFor(b => b.Name).NotEmpty();
         RuleFor(b => b.Name).MinimumLength(2);
-        RuleFor(b => b.Name).Must(CheckBrandNameIfExistsAlready).WithMessage("Böyle marka sistemde zaten kayıtlı");
-
-
+        RuleFor(b => b.Name).Must(CheckBrandNameIfExistsAlready).WithMessage(Message.BrandNameIsAlreadyExists);
 
     }
 

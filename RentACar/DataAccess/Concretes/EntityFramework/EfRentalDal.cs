@@ -11,7 +11,7 @@ namespace DataAccess.Concretes.EntityFramework;
 
 public class EfRentalDal : EfEntityRepository<Rental, RentACarContext>, IRentalDal
 {
-    public bool CheckRentedCarIsReturned(int carId)
+    public bool CheckRentedCarIsDelivered(int carId)
     {
         using (RentACarContext context = new RentACarContext())
         {

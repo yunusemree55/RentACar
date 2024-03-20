@@ -1075,6 +1075,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Castle.Core": "5.1.1",
           "FluentValidation": "11.9.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.2"
         },

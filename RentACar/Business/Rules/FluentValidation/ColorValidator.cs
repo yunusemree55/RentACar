@@ -1,4 +1,5 @@
-﻿using Core.DataAccess.EntityFramework;
+﻿using Business.Constants;
+using Core.DataAccess.EntityFramework;
 using Entities.Concretes;
 using FluentValidation;
 using System;
@@ -21,7 +22,7 @@ public class ColorValidator : AbstractValidator<Color>
         RuleFor(c => c.Name).NotEmpty();
         RuleFor(c => c.Name).MinimumLength(2);
 
-        RuleFor(c => c.Name).Must(CheckColorNameIfExistsAlready);
+        RuleFor(c => c.Name).Must(CheckColorNameIfExistsAlready).WithMessage(Message.ColorNameIsAlreadyExists);
 
     }
 

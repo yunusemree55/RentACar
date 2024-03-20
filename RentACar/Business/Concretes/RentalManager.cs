@@ -1,9 +1,11 @@
 ﻿using Business.Abstracts;
 using Business.Rules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -22,10 +24,10 @@ public class RentalManager : IRentalService
         _rentalDal = rentalDal;
     }
 
+
+    [ValidationAspect(typeof(RentalValidator), typeof(EfRentalDal))]
     public IResult Add(Rental rental)
     {
-
-        ValidationTool.Validate(new RentalValidator(_rentalDal), rental);
 
         rental.RentDate = DateTime.Now;
         _rentalDal.Add(rental);

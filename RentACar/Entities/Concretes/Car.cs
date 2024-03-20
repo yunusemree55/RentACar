@@ -16,4 +16,7 @@ public class Car : IEntity
     public string Description { get; set; }
     public int ModelYear { get; set; }
     public double DailyPrice { get; set; }
+
+    public Color Color { get; set; }
+
 }

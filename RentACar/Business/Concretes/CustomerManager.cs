@@ -1,9 +1,11 @@
 ﻿using Business.Abstracts;
 using Business.Rules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using FluentValidation;
 using System;
@@ -23,11 +25,10 @@ public class CustomerManager : ICustomerService
         _customerDal = customerDal;
     }
 
+    [ValidationAspect(typeof(CustomerValidator), typeof(EfCustomerDal))]
     public IResult Add(Customer customer)
     {
         
-        ValidationTool.Validate(new CustomerValidator(_customerDal),customer);
-
         _customerDal.Add(customer);
         return new SuccessResult($"{customer.FirstName} {customer.LastName} adlı müşteri sisteme eklendi");
     }

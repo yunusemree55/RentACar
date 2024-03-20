@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "mkjmw/hy2fqO8UGsjkyalTrdIAYUQUPUmfcfM5EYZzWLOLWn1p4UEPxuePH15gOW4SJrJXdiLqkz6EpjbzlhfA==",
+  "dgSpecHash": "EskFLKh4thr7zT/ngLrjhaPGecwsY3+gFXeR5QDCtxu6VBdmnBGxvWjfxkRdnzQ4HQDpaoLzOML7Z/8zPITCIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Yunus Emre\\Desktop\\C#RentACar\\RentACar\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\Yunus Emre\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
@@ -39,6 +40,7 @@
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
+    "C:\\Users\\Yunus Emre\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\Yunus Emre\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.24.0\\system.identitymodel.tokens.jwt.6.24.0.nupkg.sha512",

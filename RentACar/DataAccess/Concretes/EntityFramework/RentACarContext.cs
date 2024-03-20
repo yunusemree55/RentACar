@@ -14,7 +14,25 @@ public class RentACarContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(@"server=(localdb)\mssqllocaldb;database=rentacardb;Trusted_Connection=true;");
+        
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+
+        modelBuilder.Entity<Car>()
+            .HasOne(c => c.Color)
+            .WithMany(c => c.Cars)
+            .HasForeignKey(c => c.ColorId)
+            .IsRequired();
+
+        modelBuilder.Entity<Color>()
+            .HasMany(c => c.Cars)
+            .WithOne(c => c.Color)
+            .HasForeignKey(c => c.ColorId)
+            .IsRequired();
+    }
+
 
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Color> Colors { get; set; }

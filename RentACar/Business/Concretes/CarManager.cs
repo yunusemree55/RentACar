@@ -1,9 +1,11 @@
 ﻿using Business.Abstracts;
 using Business.Rules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using Entities.DTOs;
 using System;
@@ -51,10 +53,9 @@ public class CarManager : ICarService
         return new SuccessDataResult<CarDetailDto>(_carDal.GetCarDetail(id),"İlgili araba bilgileri listelendi");
     }
 
+    [ValidationAspect(typeof(CarValidator))]
     public IResult Add(Car car)
     {
-
-        ValidationTool.Validate(new CarValidator(), car);
 
         _carDal.Add(car);
         return new SuccessResult("Araba eklendi");
